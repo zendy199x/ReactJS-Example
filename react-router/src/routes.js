@@ -3,6 +3,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
+import Products from './components/Products'
 
 const routes = [
     {
@@ -19,6 +20,11 @@ const routes = [
         path: '/contact',
         exact: false,
         main: () => <Contact />
+    },
+    {
+        path: '/products',
+        exact: false,
+        main: ({match}) => <Products match={match}/>
     },
     {
         path: '',
