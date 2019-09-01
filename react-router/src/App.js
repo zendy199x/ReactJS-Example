@@ -1,9 +1,24 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+
+const MenuLink =({ label, to, actionOnlyWhenExact }) => {
+    return (
+        <Route path={to} exact={actionOnlyWhenExact} children={({ match }) => {
+            var active = match ? 'active abc' : '';
+            return (
+                <li className={active}>
+                    <Link to={to} className="my-link">
+                        {label}
+                    </Link>
+                </li>
+            )
+        }} />
+    )
+}
 
 class App extends Component {
     render() {
@@ -11,17 +26,11 @@ class App extends Component {
             <Router>
                 <div className="App">
                 {/* Menu */}
-                    <nav className="navbar navbar-inverse">
+                    <nav className="navbar navbar-default">
                         <ul className="nav navbar-nav">
-                            <li active="active">
-                                <NavLink exact to="/" className="my-link">Trang chủ</NavLink>
-                            </li>
-                            <li active="active">
-                                <NavLink to="/about" className="my-link">Giới thiệu</NavLink>
-                            </li>
-                            <li active="active">
-                                <NavLink to="/contact" className="my-link">Liên hệ</NavLink>
-                            </li>
+                            <MenuLink label="Trang chủ" to="/" actionOnlyWhenExact={true}>Trang chủ</MenuLink>
+                            <MenuLink label="Giới thiệu" to="/about" actionOnlyWhenExact={false}>Trang chủ</MenuLink>
+                            <MenuLink label="Liên hệ" to="/contact" actionOnlyWhenExact={false}>Trang chủ</MenuLink>
                         </ul>
                     </nav>
                 {/* Nội dung */}
