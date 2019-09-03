@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 class NotFoundPage extends Component {
     render() {
-        return(
+        return (
             <div className="container">
                 <div className="alert alert-warning">
                     <button type="button" className="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong>404 - Không tìm thấy trang</strong>
+                    <strong>Không Tìm Thấy Trang</strong>
                 </div>
             </div>
-        )
+        );
     }
 }
 
