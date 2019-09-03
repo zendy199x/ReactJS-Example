@@ -7,7 +7,7 @@ class ProductListPage extends Component {
         var products = [];
         return(
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <button type="button" class="btn btn-info mb-10">
+                <button type="button" className="btn btn-info mb-10">
                     Thêm sản phẩm
                 </button>
                 <ProductList>
