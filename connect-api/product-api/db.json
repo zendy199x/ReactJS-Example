@@ -1,0 +1,16 @@
+{
+	"products" : [
+		{
+			"id" : 1,
+			"name" : "iPhone XS Max",
+			"price" : 500,
+			"status" : true
+		},
+		{
+			"id" : 1,
+			"name" : "iPhone 11 Pro",
+			"price" : 700,
+			"status" : false
+		}
+	]
+}
