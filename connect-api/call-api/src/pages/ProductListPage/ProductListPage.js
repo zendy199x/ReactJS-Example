@@ -24,9 +24,9 @@ class ProductListPage extends Component {
     onDelete =(id) => {
         var {products} = this.state;
         callApi(`products/${id}`, 'DELETE', null).then(res => {
-            if(res.status === 200) { //200
+            if(res.status === 200) { //OK
                 var index = this.findIndex(products, id);
-                if(index != -1) {
+                if(index !== -1) {
                     products.splice(index, 1);
                     this.setState({
                         products : products
