@@ -8,7 +8,7 @@
     },
     {
       "name": "iphone 10",
-      "price": "1200",
+      "price": "1500",
       "status": true,
       "id": 4
     },
@@ -41,6 +41,18 @@
       "price": "1230",
       "status": "",
       "id": 9
+    },
+    {
+      "name": "iphone X",
+      "price": "123",
+      "status": "",
+      "id": 10
+    },
+    {
+      "name": "iphone XC",
+      "price": "12",
+      "status": "",
+      "id": 11
     }
   ]
 }
