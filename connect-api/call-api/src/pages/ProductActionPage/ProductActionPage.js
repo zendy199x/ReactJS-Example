@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductList from './../../components/ProductList/ProductList';
 import ProductItem from './../../components/ProductItem/ProductItem';
 import callApi from './../../utils/apiCaller';
+import { Link } from 'react-router-dom'
 
 class ProductActionPage extends Component {
     constructor(props) {
@@ -25,12 +26,14 @@ class ProductActionPage extends Component {
     onSave = (e) => {
         e.preventDefault();
         var {txtName, txtPrice, chkbStatus} = this.state;
+        var {history} = this.props;
         callApi('products', 'POST', {
             name: txtName,
             price: txtPrice,
             status: chkbStatus
         }).then(res => {
-            console.log(res);
+            history.goBack(); //quay lại trang trước đó
+            // history.push("/"); đi tới trang nào 
         })
     }
     
@@ -73,7 +76,12 @@ class ProductActionPage extends Component {
                             Còn hàng
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-primary">Lưu lại </button>
+                    <button type="submit" className="btn btn-primary mr-10">
+                        Lưu lại
+                    </button>
+                    <Link to="/product-list" className="btn btn-danger">
+                        Trở lại
+                    </Link>
                 </form>
             </div>
         )
