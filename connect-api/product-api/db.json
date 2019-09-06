@@ -1,12 +1,6 @@
 {
   "products": [
     {
-      "id": 3,
-      "name": "iPhone 8 Plus",
-      "price": "600",
-      "status": "false"
-    },
-    {
       "name": "iphone 10",
       "price": "1500",
       "status": true,
