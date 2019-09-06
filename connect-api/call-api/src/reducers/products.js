@@ -22,7 +22,10 @@ var initialState = [];
         case Types.DELETE_PRODUCT:
             index = findIndex(state, id);
             state.splice(index, 1);
-            return [...state]
+            return [...state];
+        case Types.ADD_PRODUCT:
+            state.push(action.product);
+            return [...state];
         default: return [...state];
     }
 }

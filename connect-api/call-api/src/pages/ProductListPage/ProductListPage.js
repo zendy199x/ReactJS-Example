@@ -9,40 +9,18 @@ import { actFetchProductsRequest, actDeleteProductRequest } from './../../action
 class ProductListPage extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     products : []
-        // };
     }
 
-    componentDidMount() { //chạy sau khi hàm render được chạy lần đầu tiên
+    componentDidMount() {
         this.props.fetchAllProducts();
-        // callApi('products', 'GET', null).then(res => {
-        //     this.props.fetchAllProducts(res.data);
-            // this.setState({
-            //     products: res.data
-            // })
-        // });
     }
 
     onDelete =(id) => {
         this.props.onDeleteProduct(id);
-        // var {products} = this.state;
-        // callApi(`products/${id}`, 'DELETE', null).then(res => {
-        //     if(res.status === 200) { //OK
-        //         var index = this.findIndex(products, id);
-        //         if(index !== -1) {
-        //             products.splice(index, 1);
-        //             this.setState({
-        //                 products : products
-        //             })
-        //         }
-        //     }
-        // })
     }
 
     render() {
         var { products } = this.props;
-        // var { products } = this.state;
 
         return(
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
