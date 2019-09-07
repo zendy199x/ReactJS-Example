@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import ProductList from './../../components/ProductList/ProductList';
-// import ProductItem from './../../components/ProductItem/ProductItem';
-import callApi from './../../utils/apiCaller';
-import { Link } from 'react-router-dom'
-import { actAddProductRequest, actGetProductRequest } from './../../actions/index';
+import { Link } from 'react-router-dom';
+import { actAddProductRequest, actGetProductRequest, actUpdateProductRequest } from './../../actions/index';
 import { connect } from 'react-redux';
 
 class ProductActionPage extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -18,10 +16,22 @@ class ProductActionPage extends Component {
     }
 
     componentDidMount() {
-        var  { match } = this.props;
-        if(match) {
+        var { match } = this.props;
+        if (match) {
             var id = match.params.id;
-            this.props.onEditProduct(id)
+            this.props.onEditProduct(id);
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps && nextProps.itemEditing){
+            var {itemEditing} = nextProps;
+            this.setState({
+                id : itemEditing.id,
+                txtName : itemEditing.name,
+                txtPrice : itemEditing.price,
+                chkbStatus : itemEditing.status
+            });
         }
     }
 
@@ -30,41 +40,35 @@ class ProductActionPage extends Component {
         var name = target.name;
         var value = target.type === 'checkbox' ? target.checked : target.value;
         this.setState({
-            [name] : value
-        })
+            [name]: value
+        });
     }
+
     onSave = (e) => {
         e.preventDefault();
-        var {id, txtName, txtPrice, chkbStatus} = this.state;
-        var {history} = this.props;
+        var { id, txtName, txtPrice, chkbStatus } = this.state;
+        var { history } = this.props;
         var product = {
             id : id,
             name : txtName,
             price : txtPrice,
             status : chkbStatus
         };
-        if(id) {
-            //http://localhost:3000/products/:id => HTTP METHOD: PUT
-            callApi(`products/${id}`, 'PUT', {
-            name: txtName,
-            price: txtPrice,
-            status: chkbStatus
-            }).then(res => {
-                history.goBack();
-            })
+        if (id) {
+            this.props.onUpdateProduct(product);
         } else {
             this.props.onAddProduct(product);
-            history.goBack();
         }
+        history.goBack();
     }
-    
+
     render() {
-        var {txtName, txtPrice, chkbStatus} = this.state;
-        return(
+        var { txtName, txtPrice, chkbStatus } = this.state;
+        return (
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <form onSubmit={this.onSave}>
                     <div className="form-group">
-                        <label for="">Tên sản phẩm</label>
+                        <label>Tên Sản Phẩm: </label>
                         <input
                             type="text"
                             className="form-control"
@@ -74,7 +78,7 @@ class ProductActionPage extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label for="">Giá sản phẩm</label>
+                        <label>Giá: </label>
                         <input
                             type="number"
                             className="form-control"
@@ -84,7 +88,7 @@ class ProductActionPage extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label for="">Trạng thái</label>
+                        <label>Trạng Thái: </label>
                     </div>
                     <div className="checkbox">
                         <label>
@@ -95,30 +99,39 @@ class ProductActionPage extends Component {
                                 onChange={this.onChange}
                                 checked={chkbStatus}
                             />
-                            Còn hàng
+                            Còn Hàng
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-primary mr-10">
-                        Lưu lại
-                    </button>
-                    <Link to="/product-list" className="btn btn-danger">
-                        Trở lại
+                    <Link to="/product-list" className="btn btn-danger mr-10">
+                        Trở Lại
                     </Link>
+                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
                 </form>
+
             </div>
-        )
+        );
+    }
+
+}
+
+const mapStateToProps = state => {
+    return {
+        itemEditing : state.itemEditing
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onAddProduct: (product) => {
+        onAddProduct : (product) => {
             dispatch(actAddProductRequest(product));
         },
-        onEditProduct: (id) => {
-            dispatch(actGetProductRequest(id))
+        onEditProduct : (id) => {
+            dispatch(actGetProductRequest(id));
+        },
+        onUpdateProduct : (product) => {
+            dispatch(actUpdateProductRequest(product));
         }
     }
 }
 
-export default connect(null, mapDispatchToProps)(ProductActionPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductActionPage);
