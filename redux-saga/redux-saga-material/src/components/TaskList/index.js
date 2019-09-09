@@ -27,4 +27,4 @@ class TaskList extends Component {
     }
 }
 
-export default withStyles(styles)(TaskList)
+export default withStyles(styles)(TaskList);
