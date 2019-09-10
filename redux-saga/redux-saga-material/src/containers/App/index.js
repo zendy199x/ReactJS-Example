@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import Button from '@material-ui/core/Button';
-import styles from './styles';
-import { withStyles } from '@material-ui/styles';
+import styles from './styles.js';
+import { withStyles } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import Taskboard from './../Taskboard/index';
+import Taskboard from '../Taskboard/index.js';
 import theme from './../../commons/Theme';
 
 class App extends Component {

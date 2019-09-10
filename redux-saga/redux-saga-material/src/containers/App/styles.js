@@ -1,7 +1,7 @@
 const styles = () => ({
   box: {
     display: 'flex',
-    alignItem: 'center',
+    alignItems: 'center',
   },
   shape: {
     padding: 20,

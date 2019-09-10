@@ -1,36 +1,36 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/styles';
-import styles from './styles';
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
-import { STATUSES } from './../../constains/';
-import TaskList from './../../components/TaskList';
-import TaskForm from './../../components/TaskForm';
-// import PropTypes from 'props-types';
+import AddIcon from '@material-ui/icons/Add';
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import TaskForm from '../../components/TaskForm';
+import { STATUSES } from '../../constants';
+import TaskList from '../../components/TaskList';
+import styles from './styles';
 
 const listTask = [
   {
     id: 1,
     title: 'Read book',
-    description: 'React Material UI book',
+    description: 'Read material ui book',
     status: 0,
   },
   {
     id: 2,
-    title: 'Play soccer',
-    description: 'Invite Crush',
+    title: 'Play football',
+    description: 'With my friend',
     status: 2,
   },
   {
     id: 3,
-    title: 'Online Facebook',
-    description: 'Online 12AM',
+    title: 'Play game',
+    description: '',
     status: 1,
   },
 ];
 
-class Taskboard extends Component {
+class TaskBoard extends Component {
   state = {
     open: false,
   };
@@ -90,8 +90,8 @@ class Taskboard extends Component {
   }
 }
 
-// TaskBoard.propTypes = {
-//     classes: PropTypes.object
-// }
+TaskBoard.propTypes = {
+  classes: PropTypes.object,
+};
 
-export default withStyles(styles)(Taskboard);
+export default withStyles(styles)(TaskBoard);
