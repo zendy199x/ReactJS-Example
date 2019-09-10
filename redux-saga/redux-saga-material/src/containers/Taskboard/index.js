@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { STATUSES } from './../../constains/';
 import TaskList from './../../components/TaskList';
 import TaskForm from './../../components/TaskForm';
+// import PropTypes from 'props-types';
 
 const listTask = [
     {
@@ -34,6 +35,18 @@ class Taskboard extends Component {
         open: false
     }
 
+    handleClose = () => {
+        this.setState({
+            open: false
+        });
+    }
+
+    openForm = () => {
+        this.setState({
+            open: true
+        });
+    }
+
     renderBoard() {
         let xhtml = null;
         xhtml = (
@@ -51,18 +64,6 @@ class Taskboard extends Component {
             </Grid>
         );
         return xhtml;
-    }
-
-    handleClose = () => {
-        this.setState({
-            open: false
-        });
-    }
-
-    openForm = () => {
-        this.setState({
-            open: true
-        });
     }
 
     renderForm() {
@@ -87,5 +88,9 @@ class Taskboard extends Component {
         );
     }
 }
+
+// TaskBoard.propTypes = {
+//     classes: PropTypes.object
+// }
 
 export default withStyles(styles)(Taskboard);
