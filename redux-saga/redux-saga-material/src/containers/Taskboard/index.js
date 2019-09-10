@@ -11,23 +11,23 @@ import TaskForm from './../../components/TaskForm';
 const listTask = [
     {
         id: 1,
-        title: "Read book",
-        description: "React Material UI book",
+        title: 'Read book',
+        description: 'React Material UI book',
         status: 0
     },
     {
         id: 2,
-        title: "Play soccer",
-        description: "Invite Crush",
+        title: 'Play soccer',
+        description: 'Invite Crush',
         status: 2
     },
     {
         id: 3,
-        title: "Online Facebook",
-        description: "Online 12AM",
+        title: 'Online Facebook',
+        description: 'Online 12AM',
         status: 1
     }
-]
+];
 
 class Taskboard extends Component {
     state = {
@@ -45,24 +45,24 @@ class Taskboard extends Component {
                         );
                         return (
                             <TaskList key={status.value} tasks={taskFiltered} status={status}/>
-                        )
+                        );
                     })
                 }
             </Grid>
-        )
+        );
         return xhtml;
     }
 
     handleClose = () => {
-        this.setSate({
+        this.setState({
             open: false
-        })
+        });
     }
 
     openForm = () => {
         this.setState({
             open: true
-        })
+        });
     }
 
     renderForm() {
@@ -70,7 +70,7 @@ class Taskboard extends Component {
         let xhtml = null;
         xhtml =(
             <TaskForm open={open} onClose={this.handleClose}/>
-        )
+        );
         return xhtml;
     }
 
