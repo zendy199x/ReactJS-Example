@@ -7,7 +7,10 @@ import React, { Component } from 'react';
 import TaskForm from '../../components/TaskForm';
 import { STATUSES } from '../../constants';
 import TaskList from '../../components/TaskList';
+import { connect } from 'react-redux';
 import styles from './styles';
+import { bindActionCreators } from 'redux';
+import * as taskActions from './../../actions/task';
 
 const listTask = [
     {
@@ -34,6 +37,12 @@ class TaskBoard extends Component {
     state = {
         open: false
     };
+
+    componentDidMount() {
+        const { taskActionCreator } = this.props;
+        const { fetchListTask } =  taskActions;
+        fetchListTask();
+    }
 
     handleClose = () => {
         this.setState({
@@ -96,6 +105,16 @@ class TaskBoard extends Component {
 
 TaskBoard.propTypes = {
     classes: PropTypes.object,
+    taskActionCreator: PropTypes.shape({
+        fetchListTask: PropTypes.func
+    })
 };
 
-export default withStyles(styles)(TaskBoard);
+const mapStateToProps = null;
+const mapDispatchToProps = dispatch => {
+    return {
+        taskActionCreator: bindActionCreators(taskActions, dispatch)
+    }
+}
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(TaskBoard));
