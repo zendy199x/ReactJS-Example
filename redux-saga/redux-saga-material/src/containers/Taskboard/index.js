@@ -12,36 +12,15 @@ import styles from './styles';
 import { bindActionCreators } from 'redux';
 import * as taskActions from './../../actions/task';
 
-const listTask = [
-    {
-        id: 1,
-        title: 'Read book',
-        description: 'Read material ui book',
-        status: 0,
-    },
-    {
-        id: 2,
-        title: 'Play football',
-        description: 'With my friend',
-        status: 2,
-    },
-    {
-        id: 3,
-        title: 'Play game',
-        description: '',
-        status: 1,
-    },
-];
-
 class TaskBoard extends Component {
     state = {
-        open: false
+        open: false,
     };
 
     componentDidMount() {
-        const { taskActionCreator } = this.props;
-        const { fetchListTask } =  taskActions;
-        fetchListTask();
+        const { taskActionCreators } = this.props;
+        const { fetchListTaskRequest } = taskActionCreators;
+        fetchListTaskRequest();
     }
 
     handleClose = () => {
@@ -57,6 +36,7 @@ class TaskBoard extends Component {
     };
 
     renderBoard() {
+        const { listTask } = this.props;
         let xhtml = null;
         xhtml = (
             <Grid container spacing={2}>
@@ -105,16 +85,26 @@ class TaskBoard extends Component {
 
 TaskBoard.propTypes = {
     classes: PropTypes.object,
-    taskActionCreator: PropTypes.shape({
-        fetchListTask: PropTypes.func
-    })
+    taskActionCreators: PropTypes.shape({
+        fetchListTaskRequest: PropTypes.func,
+    }),
+    listTask: PropTypes.array,
 };
 
-const mapStateToProps = null;
+const mapStateToProps = state => {
+    return {
+        listTask: state.task.listTask,
+    };
+};
 const mapDispatchToProps = dispatch => {
     return {
-        taskActionCreator: bindActionCreators(taskActions, dispatch)
-    }
-}
+        taskActionCreators: bindActionCreators(taskActions, dispatch),
+    };
+};
 
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(TaskBoard));
+export default withStyles(styles)(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(TaskBoard),
+);
