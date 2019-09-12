@@ -1,32 +1,35 @@
 import * as taskContants from './../constants/task';
+import { toastError } from '../helpers/toastHelper';
 
 const initialState = {
-    listTask: []
+    listTask: [],
 };
 
-const reducer = (state =  initialState, action) => {
-    switch(action.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case taskContants.FETCH_TASK: {
             return {
                 ...state,
-                listTask: []
-            }
+                listTask: [],
+            };
         }
         case taskContants.FETCH_TASK_SUCCESS: {
-            const {data} = action.payload;
+            const { data } = action.payload;
             return {
                 ...state,
-                listTask: data
-            }
+                listTask: data,
+            };
         }
         case taskContants.FETCH_TASK_FAILED: {
+            const { error } = action.payload;
+            toastError(error);
             return {
                 ...state,
-                listTask: []
-            }
+                listTask: [],
+            };
         }
         default:
-        return state;
+            return state;
     }
 };
 
