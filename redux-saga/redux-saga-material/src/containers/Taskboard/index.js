@@ -19,8 +19,8 @@ class TaskBoard extends Component {
 
     componentDidMount() {
         const { taskActionCreators } = this.props;
-        const { fetchListTaskRequest } = taskActionCreators;
-        fetchListTaskRequest();
+        const { fetchListTask } = taskActionCreators;
+        fetchListTask();
     }
 
     handleClose = () => {
@@ -86,7 +86,7 @@ class TaskBoard extends Component {
 TaskBoard.propTypes = {
     classes: PropTypes.object,
     taskActionCreators: PropTypes.shape({
-        fetchListTaskRequest: PropTypes.func,
+        fetchListTask: PropTypes.func,
     }),
     listTask: PropTypes.array,
 };
