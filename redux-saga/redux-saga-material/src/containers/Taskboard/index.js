@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 import { bindActionCreators } from 'redux';
 import * as taskActions from './../../actions/task';
+// import SearchBox from '../../components/SearchBox'
 
 class TaskBoard extends Component {
     state = {
@@ -70,6 +71,16 @@ class TaskBoard extends Component {
         fetchListTask();
     };
 
+    handleFilter = e => {
+        console.log('e:', e);
+    };
+
+    renderSearchBox() {
+        let xhtml = null;
+        xhtml = <SearchBox handleChange={this.handleFilter} />;
+        return xhtml;
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -83,8 +94,17 @@ class TaskBoard extends Component {
                         marginRight: 20,
                     }}
                 >
-                    Load data
+                    Load Data
                 </Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    onClick={this.openForm}
+                >
+                    <AddIcon /> Thêm mới công việc
+                </Button>
+                {this.renderSearchBox()}
                 {this.renderBoard()}
                 {this.renderForm()}
             </div>
