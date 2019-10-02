@@ -17,11 +17,11 @@ class TaskBoard extends Component {
         open: false,
     };
 
-    componentDidMount() {
-        const { taskActionCreators } = this.props;
-        const { fetchListTask } = taskActionCreators;
-        fetchListTask();
-    }
+    // componentDidMount() {
+    //     const { taskActionCreators } = this.props;
+    //     const { fetchListTask } = taskActionCreators;
+    //     fetchListTask();
+    // }
 
     handleClose = () => {
         this.setState({
@@ -64,6 +64,12 @@ class TaskBoard extends Component {
         return xhtml;
     }
 
+    loadData = () => {
+        const { taskActionCreators } = this.props;
+        const { fetchListTask } = taskActionCreators;
+        fetchListTask();
+    };
+
     render() {
         const { classes } = this.props;
         return (
@@ -72,9 +78,12 @@ class TaskBoard extends Component {
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    onClick={this.openForm}
+                    onClick={this.loadData}
+                    style={{
+                        marginRight: 20,
+                    }}
                 >
-                    <AddIcon /> Thêm mới công việc
+                    Load data
                 </Button>
                 {this.renderBoard()}
                 {this.renderForm()}
@@ -105,6 +114,6 @@ const mapDispatchToProps = dispatch => {
 export default withStyles(styles)(
     connect(
         mapStateToProps,
-        mapDispatchToProps
+        mapDispatchToProps,
     )(TaskBoard),
 );
