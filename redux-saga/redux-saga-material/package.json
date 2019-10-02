@@ -1,53 +1,57 @@
 {
-    "name": "traning",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@material-ui/core": "^4.4.0",
-        "@material-ui/icons": "^4.4.1",
-        "axios": "^0.19.0",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0",
-        "react-redux": "^7.1.1",
-        "react-script": "^2.0.5",
-        "react-scripts": "3.1.1",
-        "react-thunk": "^1.0.0",
-        "react-toastify": "^5.3.2",
-        "redux": "^4.0.4",
-        "redux-saga": "^1.1.1",
-        "redux-thunk": "^2.3.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "linting": "eslint src",
-        "prettier": "prettier \"src/**/*.{js,css}\"",
-        "format": "npm run prettier -- --write"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "eslint": "^6.3.0",
-        "eslint-config-airbnb": "^18.0.1",
-        "eslint-config-prettier": "^6.2.0",
-        "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-react": "^7.14.3",
-        "lint-staged": "^9.2.5",
-        "prettier": "^1.18.2"
-    }
+  "name": "lesson01-training-redux-saga",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.0.2",
+    "@material-ui/icons": "^4.0.1",
+    "axios": "^0.19.0",
+    "classnames": "^2.2.6",
+    "connected-react-router": "^6.4.0",
+    "eslint-config-react-app": "^4.0.1",
+    "lodash": "^4.17.11",
+    "react": "^16.8.6",
+    "react-beautiful-dnd": "^11.0.4",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.1.2",
+    "react-toastify": "^5.2.1",
+    "redux": "^4.0.1",
+    "redux-form": "^8.2.4",
+    "redux-saga": "^1.0.3",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "prettier": "prettier \"src/**/*.{js,jsx,css}\"",
+    "format": "npm run prettier -- --write"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.2",
+    "prettier": "^1.18.2"
+  }
 }

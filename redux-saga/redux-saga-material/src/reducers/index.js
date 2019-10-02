@@ -1,10 +1,18 @@
 import { combineReducers } from 'redux';
-import taskReducer from './task';
-import uiReducer from './ui';
+import { reducer as formReducer } from 'redux-form';
+import { connectRouter } from 'connected-react-router';
+import TaskReducer from './task';
+import UiReducer from './ui';
+import authReducer from './auth';
 
-const rootReducer = combineReducers({
-    task: taskReducer,
-    ui: uiReducer
-});
+const rootReducer = history =>
+  combineReducers({
+    // Define reducers
+    task: TaskReducer,
+    ui: UiReducer,
+    form: formReducer,
+    auth: authReducer,
+    router: connectRouter(history)
+  });
 
 export default rootReducer;
